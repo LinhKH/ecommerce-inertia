@@ -17,8 +17,7 @@ function Cart() {
     } = usePage().props;
     const [charges, setCharges] = useState(
         userSession.user_city != null
-            ? city.filter((city) => city.id == userSession.user_city)[0]
-                .cost_city
+            ? city.filter((city) => city.id == userSession.user_city)[0].cost_city
             : null
     );
     const [cart_list, setCartlist] = useState(cart);
@@ -42,7 +41,7 @@ function Cart() {
                 onSuccess: (res) => {
                     calculateTotal(
                         products.filter((product) => product.cart_id == id)[0][
-                        "taxable_price"
+                            "taxable_price"
                         ] * val
                     );
                 },
@@ -106,17 +105,19 @@ function Cart() {
                                 />
                                 <table className="table table-bordered">
                                     <thead>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
-                                        <th>Total</th>
-                                        <th>Remove</th>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th>Remove</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         {products.map((product) => (
                                             <tr key={product.id}>
                                                 {product.shipping_charges !=
-                                                    "free"
+                                                "free"
                                                     ? calculateTotal(
                                                         parseInt(
                                                             product.taxable_price
@@ -129,22 +130,24 @@ function Cart() {
                                                             product.taxable_price
                                                         ) * product.qty
                                                     )}
-                                                <input
-                                                    type="hidden"
-                                                    name="product_id[]"
-                                                    value={product.id}
-                                                />
-                                                <input
-                                                    type="hidden"
-                                                    name="product_attr[{{$product->id}}]"
-                                                    value={product.attrvalues}
-                                                />
-                                                <input
-                                                    type="hidden"
-                                                    name="product_color[{{$product->id}}]"
-                                                    value={product.color}
-                                                />
                                                 <td className="d-flex flex-row">
+                                                    <input
+                                                        type="hidden"
+                                                        name="product_id[]"
+                                                        value={product.id}
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        name="product_attr[{{$product->id}}]"
+                                                        value={
+                                                            product.attrvalues
+                                                        }
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        name="product_color[{{$product->id}}]"
+                                                        value={product.color}
+                                                    />
                                                     <img
                                                         className="pic-1"
                                                         src={
@@ -160,7 +163,7 @@ function Cart() {
                                                     <div className="ml-2">
                                                         {product.product_name}
                                                         {product.color_code && (
-                                                            <span class="d-block">
+                                                            <span className="d-block">
                                                                 <b>Color : </b>
                                                                 <label
                                                                     className="border"
@@ -179,7 +182,7 @@ function Cart() {
                                                             <li></li>
                                                         </ul>
                                                         {product.shipping_charges ==
-                                                            "free" ? (
+                                                        "free" ? (
                                                             <span>
                                                                 Free Delivery
                                                             </span>
@@ -239,16 +242,16 @@ function Cart() {
                                                     {generalSettings.currency}
                                                     <span className="product-total">
                                                         {product.shipping_charges ==
-                                                            "free"
+                                                        "free"
                                                             ? parseInt(
-                                                                product.taxable_price *
-                                                                product.qty
-                                                            )
+                                                                  product.taxable_price *
+                                                                      product.qty
+                                                              )
                                                             : parseInt(
-                                                                product.taxable_price *
-                                                                product.qty
-                                                            ) +
-                                                            parseInt(charges)}
+                                                                  product.taxable_price *
+                                                                      product.qty
+                                                              ) +
+                                                              parseInt(charges)}
                                                     </span>
                                                 </td>
                                                 <td>

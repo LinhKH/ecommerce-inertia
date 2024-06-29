@@ -504,12 +504,14 @@ function Product() {
                                                     );
                                                 })}
                                                 {attributes.length == 0 && (
-                                                    <div className="col-md-6">
-                                                        <span>
-                                                            No Additional
-                                                            Information.
-                                                        </span>
-                                                    </div>
+                                                    <tr>
+                                                        <td className="col-md-6">
+                                                            <span>
+                                                                No Additional
+                                                                Information.
+                                                            </span>
+                                                        </td>
+                                                    </tr>
                                                 )}
                                             </tbody>
                                         </table>
