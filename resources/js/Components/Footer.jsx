@@ -134,7 +134,7 @@ function Footer() {
                                 {" "}
                                 <strong>
                                     {generalSettings.copyright} by{" "}
-                                    <a href="https://news-portal.shop/">
+                                    <a target="_blank" href="https://news-portal.shop/">
                                         Linh Dev
                                     </a>
                                     .

@@ -1,25 +1,33 @@
-import React from 'react';
-import {usePage} from '@inertiajs/react';
-import {baseUrl} from '../Components/Baseurl';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from "react";
+import { usePage } from "@inertiajs/react";
+import { baseUrl } from "../Components/Baseurl";
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import 'swiper/css';
+import "swiper/css";
 
 function Banner() {
     const { banner } = usePage().props;
 
     return (
-      <div id="bannerSlider">
-      <Swiper>
-        {banner.map((item) => (
-          item.status == '1' && (
-            <SwiperSlide>
-              <img className="w-100" src={baseUrl+'/public/banner/' + item.banner_img} />
-            </SwiperSlide>
-          )
-        ))} 
-      </Swiper>
-      </div>
-    )
+        <div id="bannerSlider">
+            <Swiper>
+                {banner.map(
+                    (item) =>
+                        item.status == "1" && (
+                            <SwiperSlide key={item.id}>
+                                <img
+                                    className="w-100"
+                                    src={
+                                        baseUrl +
+                                        "/public/banner/" +
+                                        item.banner_img
+                                    }
+                                />
+                            </SwiperSlide>
+                        )
+                )}
+            </Swiper>
+        </div>
+    );
 }
-export default Banner
+export default Banner;

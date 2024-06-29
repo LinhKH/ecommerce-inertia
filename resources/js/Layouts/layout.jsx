@@ -1,18 +1,18 @@
-import { StrictMode, useEffect } from 'react';
-import Header from '../Components/Header'
-import Footer from '../Components/Footer'
+import { StrictMode, useEffect } from "react";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 //import { usePage } from '@inertiajs/react'
 
-export default function Layout({children}) {
+export default function Layout({ children }) {
     return (
         <div>
-            <StrictMode>
-                <Header/>
+            {/* <StrictMode> */}
+                <Header />
                 {/* <main className='container'> */}
-                    {children}
+                {children}
                 {/* </main> */}
-                <Footer/>
-            </StrictMode>
+                <Footer />
+            {/* </StrictMode> */}
         </div>
-    )
+    );
 }

@@ -116,15 +116,15 @@ function Product() {
         );
     }, []);
 
-    // slider images
-    const sliderImages = () => {
-        const images = product.gallery_img.split(",");
-        const img_array = [];
-        images.map((i) =>
-            img_array.push({ url: baseUrl + "/public/products/" + i })
-        );
-        return img_array;
-    };
+    // // slider images
+    // const sliderImages = () => {
+    //     const images = product.gallery_img.split(",");
+    //     const img_array = [];
+    //     images.map((i) =>
+    //         img_array.push({ url: baseUrl + "/public/products/" + i })
+    //     );
+    //     return img_array;
+    // };
     return (
         <section id="site-content" className="py-3">
             <div className="container">
@@ -135,8 +135,8 @@ function Product() {
                                 {product.gallery_img &&
                                     product.gallery_img
                                         .split(",")
-                                        .map((item) => (
-                                            <SwiperSlide>
+                                        .map((item, index) => (
+                                            <SwiperSlide key={index}>
                                                 <img
                                                     className="w-100"
                                                     src={
@@ -265,7 +265,9 @@ function Product() {
                                                             ? true
                                                             : false;
                                                     return (
-                                                        <>
+                                                        <React.Fragment
+                                                            key={item1.id}
+                                                        >
                                                             <input
                                                                 type="hidden"
                                                                 name="product_attrvalues"
@@ -293,7 +295,7 @@ function Product() {
                                                             >
                                                                 {item1.value}
                                                             </label>
-                                                        </>
+                                                        </React.Fragment>
                                                     );
                                                 }
                                                 return null;
@@ -478,15 +480,20 @@ function Product() {
                                                                                 ? "checked"
                                                                                 : "";
                                                                         return (
-                                                                            <>
+                                                                            <React.Fragment
+                                                                                key={
+                                                                                    item1.id
+                                                                                }
+                                                                            >
                                                                                 <td>
                                                                                     {" "}
                                                                                     {
                                                                                         item1.value
                                                                                     }
+
                                                                                     ,
                                                                                 </td>
-                                                                            </>
+                                                                            </React.Fragment>
                                                                         );
                                                                         j++;
                                                                     }
@@ -538,7 +545,12 @@ function Product() {
                                                     <div className="product-reviews">
                                                         {reviews.map(
                                                             (review) => (
-                                                                <div className="review-item">
+                                                                <div
+                                                                    className="review-item"
+                                                                    key={
+                                                                        review.id
+                                                                    }
+                                                                >
                                                                     <h6>
                                                                         <span className="bg-success">
                                                                             <i className="fa fa-star"></i>{" "}

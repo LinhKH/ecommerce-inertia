@@ -45,12 +45,12 @@ function Header() {
         return (
             children.length &&
             children.map((item) => (
-                <>
-                    <option value={item.category_slug} key={item.id}>
+                <React.Fragment key={item.id}>
+                    <option value={item.category_slug}>
                         {item.category_name}
                     </option>
                     {childCategoryList(item.id)}{" "}
-                </>
+                </React.Fragment>
             ))
         );
     };
@@ -129,25 +129,24 @@ function Header() {
                                         name="category"
                                         aria-label="Default select example"
                                     >
-                                        <option value="all">
-                                            All Categories
-                                        </option>
-                                        {all_category.map((item) => (
-                                            <>
-                                                {item.parent_category ==
-                                                    "0" && (
-                                                    <option
-                                                        key={item.id}
-                                                        value={
-                                                            item.categpry_slug
-                                                        }
-                                                    >
-                                                        {item.category_name}
-                                                    </option>
-                                                )}
-                                                {childCategoryList(item.id)}{" "}
-                                            </>
-                                        ))}
+                                            <option value="all">
+                                                All Categories
+                                            </option>
+                                            {all_category.map((item) => (
+                                                <React.Fragment key={item.id}>
+                                                    {item.parent_category ==
+                                                        "0" && (
+                                                        <option
+                                                            value={
+                                                                item.categpry_slug
+                                                            }
+                                                        >
+                                                            {item.category_name}
+                                                        </option>
+                                                    )}
+                                                    {childCategoryList(item.id)}{" "}
+                                                </React.Fragment>
+                                            ))}
                                     </select>
                                     <button
                                         type="submit"

@@ -10,9 +10,9 @@ function SellingBlog() {
             <div className="section-heading">
                 <h2 className="title">Best Selling</h2>
             </div>
-            {orderProducts.map((value) => {
+            {orderProducts.map((value, index) => {
                 return (
-                    <div className="blog-grid d-flex flex-row" key={value.id}>
+                    <div className="blog-grid d-flex flex-row" key={index}>
                         <Link
                             href={baseUrl + "/product/" + value.slug}
                             className="blog-img"

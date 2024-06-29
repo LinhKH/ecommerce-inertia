@@ -47,9 +47,9 @@ function ChildCategory() {
                 </>
             ) : (
                 all_category.map((item) => (
-                    <>
+                    <React.Fragment key={item.id}>
                         {item.parent_category == "0" && (
-                            <li key={item.id}>
+                            <li>
                                 <Link
                                     href={baseUrl + "/c/" + item.category_slug}
                                 >
@@ -57,7 +57,7 @@ function ChildCategory() {
                                 </Link>
                             </li>
                         )}
-                    </>
+                    </React.Fragment>
                 ))
             )}
         </ul>
