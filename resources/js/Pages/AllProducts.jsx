@@ -25,7 +25,6 @@ function AllProducts() {
     });
 
     const handleFilter = (e) => {
-        console.log(data.brand);
         router.get(
             url_search,
             {

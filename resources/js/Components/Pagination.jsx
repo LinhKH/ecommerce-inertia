@@ -1,6 +1,6 @@
 import React from "react";
 import he from "he"; // Importing the 'he' library for decoding HTML entities
-import { usePage } from "@inertiajs/react";
+import { usePage, Link } from "@inertiajs/react";
 
 function Pagination({ links }) {
     // const {links} = usePage().props.products;
@@ -19,10 +19,14 @@ function Pagination({ links }) {
                                 link.active ? "active" : ""
                             }`}
                         >
-                            <a className="page-link" href={link.url}>
-                                {decodeLabel(link.label)}{" "}
+                            <Link className="page-link" href={link.url}>
+                                {decodeLabel(
+                                    link.label
+                                        .replace(" Previous", "")
+                                        .replace("Next ", "")
+                                )}{" "}
                                 {/* Decoding the label here */}
-                            </a>
+                            </Link>
                         </li>
                     ) : (
                         <li
@@ -31,14 +35,14 @@ function Pagination({ links }) {
                                 link.active ? "active disabled" : "disabled"
                             }`}
                         >
-                            <a className="page-link" href={link.url}>
+                            <Link className="page-link" href={link.url}>
                                 {decodeLabel(
                                     link.label
                                         .replace(" Previous", "")
                                         .replace("Next ", "")
                                 )}{" "}
                                 {/* Decoding the label here */}
-                            </a>
+                            </Link>
                         </li>
                     )
                 )}

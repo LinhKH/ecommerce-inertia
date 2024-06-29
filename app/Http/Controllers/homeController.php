@@ -22,7 +22,7 @@ use App\Models\Page;
 use Illuminate\Pagination\Paginator;
 use Inertia\Inertia;
 
-class homeController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
@@ -272,7 +272,7 @@ class homeController extends Controller
         } else {
             $products = Product::select(['products.*', 'brands.brand_name'])
                 ->leftJoin('brands', 'brands.id', '=', 'products.brand')
-                ->paginate(9);
+                ->paginate($limit);
         }
         $url_search = url()->current();
 
