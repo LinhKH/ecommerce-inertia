@@ -10,7 +10,7 @@ function ChildCategory() {
             <ul className="subcategory-list pl-3">
                 {subcategories.map((subCategory) => (
                     <li key={subCategory.id}>
-                        <Link href={baseUrl + "/c/" + subCategory.category_slug}>
+                        <Link preserveScroll href={baseUrl + "/c/" + subCategory.category_slug}>
                             {cat_detail !== null &&
                                 cat_detail.id == subCategory.id && (
                                     <i className="fas fa-angle-right"></i>
@@ -30,12 +30,12 @@ function ChildCategory() {
             {cat_detail != null ? (
                 <>
                     <li className="category_name">
-                        <Link href={baseUrl + "/search?category=all"}>
+                        <Link preserveScroll href={baseUrl + "/search?category=all"}>
                             <strong>All Categories</strong>
                         </Link>
                     </li>
                     <li className="category_name">
-                        <Link href={baseUrl + "/c/" + cat_array.category_slug}>
+                        <Link preserveScroll href={baseUrl + "/c/" + cat_array.category_slug}>
                             {cat_detail.id == cat_array.id && (
                                 <i className="fas fa-angle-right"></i>
                             )}
@@ -50,7 +50,7 @@ function ChildCategory() {
                     <React.Fragment key={item.id}>
                         {item.parent_category == "0" && (
                             <li>
-                                <Link
+                                <Link preserveScroll
                                     href={baseUrl + "/c/" + item.category_slug}
                                 >
                                     {item.category_name}

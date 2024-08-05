@@ -19,7 +19,7 @@ function Pagination({ links }) {
                                 link.active ? "active" : ""
                             }`}
                         >
-                            <Link className="page-link" href={link.url}>
+                            <Link preserveScroll className="page-link" href={link.url}>
                                 {decodeLabel(
                                     link.label
                                         .replace(" Previous", "")
@@ -35,7 +35,7 @@ function Pagination({ links }) {
                                 link.active ? "active disabled" : "disabled"
                             }`}
                         >
-                            <Link className="page-link" href={link.url}>
+                            <Link preserveScroll className="page-link" href={link.url}>
                                 {decodeLabel(
                                     link.label
                                         .replace(" Previous", "")
