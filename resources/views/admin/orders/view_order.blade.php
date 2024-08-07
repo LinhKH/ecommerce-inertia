@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title','Orders')
+@section('title','Orders Details')
 @section('content')
 <div class="content-wrapper">
     <div class="message"></div>
@@ -40,14 +40,14 @@
                                                 @php $atr_val = array_filter(explode(':',$p_attr[$i]));  @endphp
                                                 <span>
                                                     @foreach($attributes as $attr_array)
-                                                    @if(!empty($atr_val) && $attr_array->id == $atr_val[0])
-                                                    <span><b>{{$attr_array->title}}:</b></span>
-                                                    @endif
+                                                        @if(!empty($atr_val) && $attr_array->id == $atr_val[0])
+                                                        <span><b>{{$attr_array->title}}:</b></span>
+                                                        @endif
                                                     @endforeach
                                                     @foreach($attrvalues as $attr_vals)
-                                                    @if(!empty($atr_val) && ($attr_vals->id == $atr_val[1] && $atr_val[0] == $attr_vals->attribute))
-                                                    <span>{{$attr_vals->value}}</span>
-                                                    @endif
+                                                        @if(!empty($atr_val) && ($attr_vals->id == $atr_val[1] && $atr_val[0] == $attr_vals->attribute))
+                                                        <span>{{$attr_vals->value}}</span>
+                                                        @endif
                                                     @endforeach
                                                 </span></br>
                                             @endfor

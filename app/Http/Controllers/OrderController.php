@@ -22,7 +22,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        // return $data = Order::select(['orders.*','users.name','users.email','users.phone','users.address','users.city','users.state','products.product_name','products.unit_price','products.thumbnail_img','products.shipping_days',\DB::raw("GROUP_CONCAT(products.id) as p_id")])
+        // return $data = Order::select(['orders.*','users.name','users.email','users.phone','users.address','users.city','users.state','products.product_name','products.unit_price','products.thumbnail_img','products.shipping_days',\DB::raw("GROUP_CONCAT(products.id) as p_id"), \DB::raw("GROUP_CONCAT(order_products.product_delivery SEPARATOR ',') as delivery")])
         //             ->leftjoin('order_products','order_products.order_id','=','orders.id')
         //             ->leftjoin('products','products.id','=','order_products.product_id')
         //             ->leftjoin('users','orders.user','=','users.user_id')
@@ -30,7 +30,8 @@ class OrderController extends Controller
         //             ->orderBy('id','desc')
         //             ->get();
         if($request->ajax()){
-            $data = Order::select(['orders.*','users.name','users.email','users.phone','users.address','users.city','users.state','products.product_name','products.unit_price','products.thumbnail_img','products.shipping_days',\DB::raw("GROUP_CONCAT(products.id SEPARATOR '|||') as p_id"),\DB::raw("GROUP_CONCAT(order_products.product_delivery SEPARATOR ',') as delivery")])
+            $data = Order::select(['orders.*','users.name','users.email','users.phone','users.address','users.city','users.state','products.product_name','products.unit_price','products.thumbnail_img','products.shipping_days'
+                                ,\DB::raw("GROUP_CONCAT(products.id SEPARATOR '|||') as p_id"),\DB::raw("GROUP_CONCAT(order_products.product_delivery SEPARATOR ',') as delivery")])
                     ->leftjoin('order_products','order_products.order_id','=','orders.id')
                     ->leftjoin('products','products.id','=','order_products.product_id')
                     ->leftjoin('users','orders.user','=','users.user_id')

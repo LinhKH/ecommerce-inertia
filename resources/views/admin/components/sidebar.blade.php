@@ -200,7 +200,7 @@
                     </ul>
                 </li>
                 <li
-                    class="nav-item has-treeview {{ Request::path() == 'admin/general-settings' || Request::path() == 'admin/profile-settings' || Request::path() == 'admin/banner' ? 'menu-open' : '' }}">
+                    class="nav-item has-treeview {{ Request::path() == 'admin/general-settings' || Request::path() == 'admin/profile-settings' || Request::path() == 'admin/banner' || Request::path() == 'admin/social-settings' ? 'menu-open' : '' }}">
                     <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>Settings <i class="fas fa-angle-left right"></i></p>

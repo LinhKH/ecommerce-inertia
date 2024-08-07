@@ -27,7 +27,7 @@ function UserLogin() {
                         timer: 1500,
                     });
                     setTimeout(() => {
-                        window.location.href = baseUrl;
+                        window.location.href = document.referrer;
                     }, 1000);
                 }
             },
