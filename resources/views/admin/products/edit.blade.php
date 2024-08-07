@@ -267,7 +267,11 @@
                                                                     multiple>
                                                                     @if (!empty($attrvalues))
                                                                         @foreach ($attrvalues as $item1)
-                                                                            @php $selected = ($item1->attribute == $value->attribute_id) ? 'selected' : ''; @endphp
+                                                                            @php 
+                                                                            $arrAttrvalues = explode(",", $value->attrvalues);
+                                                                            $selected = ($item1->attribute == $value->attribute_id && in_array($item1->id, $arrAttrvalues)  ) ? 'selected' : ''; 
+                                                                            
+                                                                            @endphp
                                                                             <option value="{{ $item1->id }}"
                                                                                 {{ $selected }}>{{ $item1->value }}
                                                                             </option>
