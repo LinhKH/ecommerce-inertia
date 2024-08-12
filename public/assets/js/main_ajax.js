@@ -1369,6 +1369,7 @@ $(function(){
         var val = $(this).children('option:selected').data('attribute');
         // var val = $(this).val();
         var attr_value = $(this).data('attr_value');
+        $('#attrvalue'+attr_value).html('');
         $.ajax({
             url: uRL + '/admin/get-attrvalue',
             type: 'POST',

@@ -248,8 +248,7 @@
                                                             value="{{ $value->attribute_id }}">
                                                         <tr class="attrcount">
                                                             <td>
-                                                                <select name="attribute[]" id="attribute"
-                                                                    class="form-control attribute-select">
+                                                                <select name="attribute[]" id="attribute" class="form-control attribute-select" data-attr_value="{{ $count }}">
                                                                     @if (!empty($attribute))
                                                                         @foreach ($attribute as $item)
                                                                             @php $selected = ($item->id == $value->attribute_id) ? 'selected' : ''; @endphp
@@ -262,9 +261,7 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <select class="form-control attrvalue-select select2"
-                                                                    name="attrvalue{{ $count }}[]" id="attrvalue"
-                                                                    multiple>
+                                                                <select class="form-control attrvalue-select select2" name="attrvalue{{ $count }}[]" id="attrvalue{{ $count }}" multiple>
                                                                     @if (!empty($attrvalues))
                                                                         @foreach ($attrvalues as $item1)
                                                                             @php 
@@ -668,22 +665,20 @@
         $('thead').on('click', '.addRow', function() {
             count++;
             var tr = '<tr class="attrcount">' +
-                '<td>' +
-                '<select name="attribute[]" id="attribute" class="form-control attribute-select" data-attr_value="' +
-                count + '">' +
-                '<option value="">Select an Attribute</option>' +
-                <?php foreach($attribute as $item){ ?> '<option value="{{ $item->id }}" data-attribute="{{ $item->id }}">{{ $item->title }}({{ $item->category_name }})</option>' +
-                <?php }?> '</select>' +
-                '</td>' +
-                '<td>' +
-                '<select class="form-control attrvalue-select select2" name="attrvalue' + count +
-                '[]" id="attrvalue' + count + '" multiple>' +
-                '<option value="" disabled selected >First Select Attribute</option>' +
+                        '<td>' +
+                            '<select name="attribute[]" id="attribute" class="form-control attribute-select" data-attr_value="' + count + '">' +
+                                '<option value="">Select an Attribute</option>' +
+                                <?php foreach($attribute as $item){ ?> '<option value="{{ $item->id }}" data-attribute="{{ $item->id }}">{{ $item->title }}</option>' +
+                        <?php }?> '</select>' +
+                        '</td>' +
+                        '<td>' +
+                            '<select class="form-control attrvalue-select select2" name="attrvalue' + count + '[]" id="attrvalue' + count + '" multiple>' +
+                                '<option value="" disabled selected >First Select Attribute</option>' +
 
-                '</select>' +
-                '</td>' +
-                '<td><a href="javascript:;" class="btn btn-danger deleteRow">-</a></td>' +
-                '</tr>';
+                            '</select>' +
+                        '</td>' +
+                        '<td><a href="javascript:;" class="btn btn-danger deleteRow">-</a></td>' +
+                    '</tr>';
 
             $('tbody').append(tr);
             $('.select2').select2();

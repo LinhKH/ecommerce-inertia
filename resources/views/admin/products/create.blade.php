@@ -545,22 +545,20 @@
         var count = 0;
         $('thead').on('click', '.addRow', function() {
             count++;
-            var tr = '<tr>' +
-                '<td>' +
-                '<select name="attribute[]" id="attribute" class="form-control attribute-select" data-attr_value="' +
-                count + '">' +
-                '<option value="">Select an Attribute</option>' +
-                <?php foreach($attribute as $item){ ?> '<option value="{{ $item->id }}" data-attribute="{{ $item->id }}">{{ $item->title }}({{ $item->category_name }})</option>' +
-                <?php }?> '</select>' +
-                '</td>' +
-                '<td>' +
-                '<select class="form-control attrvalue-select select2" name="attrvalue' + count +
-                '[]" id="attrvalue' + count + '" data-attr_values="' + count + '" multiple>' +
+            var tr =    '<tr>' +
+                            '<td>' +
+                                '<select name="attribute[]" id="attribute" class="form-control attribute-select" data-attr_value="' + count + '">' +
+                                    '<option value="">Select an Attribute</option>' +
+                                    <?php foreach($attribute as $item){ ?> '<option value="{{ $item->id }}" data-attribute="{{ $item->id }}">{{ $item->title }}</option>' +
+                                <?php }?> '</select>' +
+                            '</td>' +
+                            '<td>' +
+                                '<select class="form-control attrvalue-select select2" name="attrvalue' + count + '[]" id="attrvalue' + count + '" data-attr_values="' + count + '" multiple>' +
 
-                '</select>' +
-                '</td>' +
-                '<td><a href="javascript:;" class="btn btn-danger deleteRow">-</a></td>' +
-                '</tr>';
+                                '</select>' +
+                            '</td>' +
+                            '<td><a href="javascript:;" class="btn btn-danger deleteRow">-</a></td>' +
+                        '</tr>';
 
             $('tbody').append(tr);
             $('.select2').select2();
