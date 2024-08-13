@@ -18,8 +18,8 @@
 <!-- Bootstrap 4 -->
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
+<script src="https://adminlte.io/themes/v3/plugins/select2/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('assets/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('assets/js/summernote-bs4.min.js') }}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
