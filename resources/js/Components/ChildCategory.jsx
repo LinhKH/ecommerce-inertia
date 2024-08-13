@@ -15,7 +15,7 @@ function ChildCategory() {
                                 cat_detail.id == subCategory.id && (
                                     <i className="fas fa-angle-right"></i>
                                 )}
-                            {subCategory.category_name}
+                            {' '}{subCategory.category_name}
                         </Link>
                         {subCategory.sub_category &&
                             renderSubcategories(subCategory.sub_category)}
@@ -44,6 +44,19 @@ function ChildCategory() {
                         {cat_array.sub_category &&
                             renderSubcategories(cat_array.sub_category)}
                     </li>
+                    {all_category.map((item) => (
+                        <React.Fragment key={item.id}>
+                            {item.parent_category == "0" && item.id != cat_array.id && (
+                                <li>
+                                    <Link preserveScroll
+                                        href={baseUrl + "/c/" + item.category_slug}
+                                    >
+                                        {item.category_name}
+                                    </Link>
+                                </li>
+                            )}
+                        </React.Fragment>
+                    ))}
                 </>
             ) : (
                 all_category.map((item) => (
