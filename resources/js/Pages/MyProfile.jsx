@@ -117,7 +117,7 @@ function MyProfile() {
                             </div>
                         </div>
                         <div className="form-group row mb-3">
-                            <label htmlFor="staticphone select-state" className="col-lg-3 col-sm-5 col-form-label">State :</label>
+                            <label htmlFor="staticphone select-state" className="col-lg-3 col-sm-5 col-form-label">Province/City :</label>
                             <div className="col-lg-5 col-sm-7">
                                 <select className="form-control" name="state" id="state" value={data.state} onChange={handleChange}>
                                     <option value="">First Select Country</option>
@@ -131,7 +131,7 @@ function MyProfile() {
                             </div>
                         </div>
                         <div className="form-group row mb-3">
-                            <label htmlFor="staticphone" className="col-lg-3 col-sm-5 col-form-label">City :</label>
+                            <label htmlFor="staticphone" className="col-lg-3 col-sm-5 col-form-label">District :</label>
                             <div className="col-lg-5 col-sm-7">
                                 <select className="form-control" name="city" id="city" value={data.city} onChange={handleChange}>
                                     <option value="">First Select State</option>

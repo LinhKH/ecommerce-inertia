@@ -74,7 +74,7 @@ function MyOrder() {
                                                         .split("|||")
                                                         .map(function (names) {
                                                             return (
-                                                                <li className="mb-2">
+                                                                <li key={names} className="mb-2">
                                                                     {names}
                                                                 </li>
                                                             );

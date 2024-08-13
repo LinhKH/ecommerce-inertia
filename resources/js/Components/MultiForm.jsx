@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { usePage, useForm } from "@inertiajs/react";
+import { usePage, useForm, Link } from "@inertiajs/react";
 import { baseUrl } from "../Components/Baseurl";
 import Preloader from "./Preloader";
 
@@ -157,12 +157,12 @@ const MultiForm = () => {
                                 <tr>
                                     <th>Delivery Details</th>
                                     <th>
-                                        <a
+                                        <Link
                                             href={baseUrl + "/my-profile"}
                                             className="btn btn-primary"
                                         >
                                             Change
-                                        </a>
+                                        </Link>
                                     </th>
                                 </tr>
                             </thead>
@@ -208,17 +208,18 @@ const MultiForm = () => {
                                                     product.thumbnail_img
                                                 }
                                                 alt={product.product_name}
-                                                width="70px"
+                                                width="100px"
                                             />
                                             <div className="ml-2">
                                                 {product.product_name}
                                                 {product.color_code && (
-                                                    <div>
+                                                    <div className="d-flex">
                                                         <b>Color : </b>
                                                         <label
                                                             style={{
-                                                                backgroundColor:
-                                                                    product.color_code,
+                                                                backgroundColor: product.color_code,
+                                                                marginLeft:"10px",
+                                                                borderRadius:"50%",
                                                                 cursor: "auto",
                                                                 height: "20px",
                                                                 width: "20px",
@@ -229,8 +230,30 @@ const MultiForm = () => {
                                                     </div>
                                                 )}
                                                 <ul>
-                                                    <li></li>
-                                                    <li></li>
+                                                    {attributes.map((row) => {
+                                                        if (product.attrvalues) {
+                                                            let values = product.attrvalues.split(",");
+
+                                                            return values.map((item) => {
+                                                                let arrItem = item.split(":");
+                                                                var attri = arrItem[0];
+                                                                var attriValue = attrvalues.find(item => item.id == arrItem[1])['value'] ?? null;
+                                                                
+                                                                if (attri) {
+                                                                    if (row.id == attri) {
+                                                                        return (
+                                                                            <li key={row.id}>
+                                                                                <b>{row.title} : </b> {attriValue}
+                                                                            </li>
+                                                                        );
+                                                                    }
+
+                                                                    return null;
+                                                                }
+                                                            });
+
+                                                        }
+                                                    })}
                                                 </ul>
                                                 {product.shipping_charges ==
                                                 "free" ? (
@@ -350,7 +373,7 @@ const MultiForm = () => {
                                                         <img
                                                             src={
                                                                 baseUrl +
-                                                                "/public/images/cod.jpg"
+                                                                "/public/images/cod.png"
                                                             }
                                                             alt=""
                                                             height="20px"

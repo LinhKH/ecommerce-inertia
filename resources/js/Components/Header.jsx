@@ -1,10 +1,11 @@
 import React from "react";
-import { usePage, Link, useForm } from "@inertiajs/react";
+import { usePage, Link, useForm  } from "@inertiajs/react";
 import { baseUrl } from "../Components/Baseurl";
 // import { toast, ToastContainer } from 'react-toastify';
 // import "react-toastify/dist/ReactToastify.css";
 
 //import {Link} from '@inertiajs/react'
+import { router } from '@inertiajs/react'
 import swal from "@sweetalert/with-react";
 
 function Header() {
@@ -38,6 +39,11 @@ function Header() {
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
+    };
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        router.get(baseUrl + "/search", data);
     };
 
     const childCategoryList = (id) => {
@@ -108,8 +114,7 @@ function Header() {
                         </div>
                         <div className="col-lg-5 col-md-8 col-sm-12">
                             <div className="searchbox position-relative my-3">
-                                <form
-                                    action={baseUrl + "/search"}
+                                <form onSubmit={handleSubmit}
                                     method="GET"
                                     className="search-form rounded-0 d-flex"
                                 >

@@ -4,6 +4,7 @@ import Pagination from "../Components/Pagination";
 import ProductGrid from "./ProductGrid";
 import Sidebar from "./Sidebar";
 import { baseUrl } from "../Components/Baseurl";
+import Preloader from "../Components/Preloader";
 
 function AllProducts() {
     const {
@@ -17,7 +18,7 @@ function AllProducts() {
     } = usePage().props;
     const [change, setChange] = useState(false);
 
-    const { data, setData, get } = useForm({
+    const { data, setData } = useForm({
         sort: "latest",
         brand: [],
         min_price: "0",
@@ -33,6 +34,9 @@ function AllProducts() {
             {
                 preserveState: true,
                 preserveScroll: true,
+                onBefore: (visit) => {
+                    setChange(true)
+                },
                 onSuccess: (res) => {
                     setChange(false);
                 },
@@ -52,6 +56,7 @@ function AllProducts() {
     const ProductAvailable = products.data.length > 0;
     return (
         <>
+            {change && <Preloader />}
             <div id="banner" className="d-flex flex-row justify-content-center">
                 <div className="align-self-center">
                     {keyword != null ? (

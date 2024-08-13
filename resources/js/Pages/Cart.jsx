@@ -158,18 +158,19 @@ function Cart() {
                                                         alt={
                                                             product.product_name
                                                         }
-                                                        width="70px"
+                                                        width="100px"
                                                     />
                                                     <div className="ml-2">
                                                         {product.product_name}
                                                         {product.color_code && (
-                                                            <span className="d-block">
+                                                            <span className="d-flex">
                                                                 <b>Color : </b>
                                                                 <label
                                                                     className="border"
                                                                     style={{
-                                                                        backgroundColor:
-                                                                            product.color_code,
+                                                                        backgroundColor: product.color_code,
+                                                                        marginLeft:"10px",
+                                                                        borderRadius:"50%",
                                                                         cursor: "auto",
                                                                         height: "25px",
                                                                         width: "25px",
@@ -178,8 +179,30 @@ function Cart() {
                                                             </span>
                                                         )}
                                                         <ul>
-                                                            <li></li>
-                                                            <li></li>
+                                                            {attributes.map((row) => {
+                                                                if (product.attrvalues) {
+                                                                    let values = product.attrvalues.split(",");
+    
+                                                                    return values.map((item) => {
+                                                                        let arrItem = item.split(":");
+                                                                        var attri = arrItem[0];
+                                                                        var attriValue = attrvalues.find(item => item.id == arrItem[1])['value'] ?? null;
+                                                                        
+                                                                        if (attri) {
+                                                                            if (row.id == attri) {
+                                                                                return (
+                                                                                    <li key={row.id}>
+                                                                                        <b>{row.title} : </b> {attriValue}
+                                                                                    </li>
+                                                                                );
+                                                                            }
+    
+                                                                            return null;
+                                                                        }
+                                                                    });
+
+                                                                }
+                                                            })}
                                                         </ul>
                                                         {product.shipping_charges ==
                                                         "free" ? (

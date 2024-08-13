@@ -213,9 +213,7 @@ class HomeController extends Controller
         } else {
             $order = 'products.id DESC';
         }
-
         if ($slug != '' && $slug != NULL) {
-            // return var_dump($slug);
             $cat_detail = Category::select('*')->where('categories.category_slug', $slug)->first();
             $cat_array =  get_parent_category($cat_detail);
 
@@ -233,7 +231,7 @@ class HomeController extends Controller
             $where .= "products.category IN ({$child})";
             if ($request->keyword && $request->keyword != '') {
                 $keyword = $request->keyword;
-                $where .= "AND products.product_name LIKE '%{$request->keyword}%' OR products.tags LIKE '%{$request->keyword}%'";
+                $where .= "AND (products.product_name LIKE '%{$request->keyword}%' OR products.tags LIKE '%{$request->keyword}%') ";
             } else {
                 $keyword = null;
             }
@@ -259,6 +257,7 @@ class HomeController extends Controller
             }
             $where .= 'products.brand IN (' . implode(',', $request->brand) .')';
         }
+        // dd($brands);
 
         $limit = 6;
         if ($where != '') {

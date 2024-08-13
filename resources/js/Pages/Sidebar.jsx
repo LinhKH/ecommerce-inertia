@@ -46,7 +46,7 @@ function Sidebar({ filterData, filterSetData, handleFilter }) {
                     aria-labelledby="headingOne"
                     // data-bs-parent="#accordionExample"
                 >
-                    <div className="accordion-body">
+                    <div className="accordion-body" style={{border: "1px solid", boxShadow: "3px 3px #059473 , 0em 0 .4em olive"}}>
                         <ChildCategory key={1} />
                     </div>
                 </div>
@@ -70,7 +70,7 @@ function Sidebar({ filterData, filterSetData, handleFilter }) {
                     aria-labelledby="headingTwo"
                     // data-bs-parent="#accordionExample"
                 >
-                    <div className="accordion-body">
+                    <div className="accordion-body" style={{border: "1px solid", boxShadow: "3px 3px #059473 , 0em 0 .4em olive"}}>
                         <div className="row">
                             <div className="col-md-6">
                                 <span className="d-block">Min</span>
@@ -129,7 +129,7 @@ function Sidebar({ filterData, filterSetData, handleFilter }) {
                         aria-labelledby="headingThree"
                         // data-bs-parent="#accordionExample"
                     >
-                        <div className="accordion-body">
+                        <div className="accordion-body" style={{border: "1px solid", boxShadow: "3px 3px #059473 , 0em 0 .4em olive"}}>
                             {brands.map((brand_item) => (
                                 <div
                                     className="radio-button"
