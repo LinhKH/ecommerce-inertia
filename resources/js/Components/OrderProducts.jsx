@@ -18,14 +18,14 @@ function OrderProducts({ order_detail, order_products, reviews }) {
                 </tr>
             </table>
             {order_detail.order_products.map((value) => (
-                <div className="d-flex flex-row mb-3">
+                <div className="d-flex flex-row mb-3" key={value.id}>
                     <img
                         src={
                             baseUrl +
                             "/public/products/" +
                             value.thumbnail_img.split(",")[0]
                         }
-                        class="mr-2"
+                        className="mr-2"
                         width="90px"
                     />
                     <div>
@@ -34,11 +34,11 @@ function OrderProducts({ order_detail, order_products, reviews }) {
                             <li>Qty : {value.product_qty}</li>
                             <li>
                                 {color.map((item) => (
-                                    <>
-                                        {value.colors == item.id
-                                            ? item.color_name
+                                    <React.Fragment key={item.id}>
+                                        {value.product_color == item.id
+                                            ? "Color : " + item.color_name
                                             : ""}
-                                    </>
+                                    </React.Fragment>
                                 ))}
                             </li>
                             <li></li>
@@ -46,44 +46,42 @@ function OrderProducts({ order_detail, order_products, reviews }) {
                                 Amount : {generalSettings.currency}
                                 {value.product_amount}
                             </li>
-                            <li>
-                                {value.product_delivery == "0" ? (
-                                    <>
-                                        <li>Delivery : Pending </li>
-                                        <li>
-                                            Expected Delivery :{" "}
-                                            {calculateDate(
-                                                order_detail.order.created_at,
-                                                value.shipping_days
-                                            )}
-                                        </li>
-                                    </>
-                                ) : (
-                                    <>
-                                        <li>Delivery : Delivered</li>
-                                        <li>
-                                            Delivered On :{" "}
-                                            {new Date(
-                                                order_detail.order.updated_at
-                                            ).toLocaleDateString()}
-                                        </li>
-                                        {!reviews.includes(value.id) && (
-                                            <li>
-                                                <Link
-                                                    href={
-                                                        baseUrl +
-                                                        "/review/create/" +
-                                                        value.product_id
-                                                    }
-                                                    class="btn btn-primary btn-sm"
-                                                >
-                                                    Write a product review
-                                                </Link>
-                                            </li>
+                            {value.product_delivery == "0" ? (
+                                <>
+                                    <li>Delivery : Pending </li>
+                                    <li>
+                                        Expected Delivery :{" "}
+                                        {calculateDate(
+                                            order_detail.order.created_at,
+                                            value.shipping_days
                                         )}
-                                    </>
-                                )}
-                            </li>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li>Delivery : Delivered</li>
+                                    <li>
+                                        Delivered On :{" "}
+                                        {new Date(
+                                            order_detail.order.updated_at
+                                        ).toLocaleDateString()}
+                                    </li>
+                                    {!reviews.includes(value.id) && (
+                                        <li>
+                                            <Link
+                                                href={
+                                                    baseUrl +
+                                                    "/review/create/" +
+                                                    value.product_id
+                                                }
+                                                className="btn btn-primary btn-sm"
+                                            >
+                                                Write a product review
+                                            </Link>
+                                        </li>
+                                    )}
+                                </>
+                            )}
                         </ul>
                     </div>
                 </div>
