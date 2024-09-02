@@ -192,7 +192,6 @@ class PaymentController extends Controller
                 $product_qty = $product_qty + $product->qty;
             }
         }
-
         $order = new Order();
         $order->user = $user_id;
         $order->products = $product_count;
@@ -200,11 +199,13 @@ class PaymentController extends Controller
         $order->pay_id = $payment->id;
         $order->amount = Session::get('amount');
         $order->save();
+        
+        $buy_not_from_cart = Session::get('checkout'); // have 'checkout' then buy not from cart, else buy from cart
 
         foreach ($user_products as $product) {
             $attrvalues = '';
             $color = '';
-            if ($request) {
+            if ($request && !empty($buy_not_from_cart)) {
                 $attr_array = [];
                 foreach ($request as $key => $value) {
                     if ($key != 'product_id' && $key != 'color' && $key != 'location' && $key != 'pay_method' && $key != 'amount') {

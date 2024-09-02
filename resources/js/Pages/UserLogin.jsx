@@ -8,8 +8,8 @@ function UserLogin() {
     const { userSession, flash } = usePage().props;
 
     const { data, setData, post, processing, errors } = useForm({
-        username: "",
-        password: "",
+        username: "mr.linh1090@gmail.com",
+        password: "123456",
     });
 
     function handleSubmit(e) {
